@@ -1,4 +1,4 @@
-package main
+package simqueue
 
 import (
 	"container/heap"
@@ -13,7 +13,6 @@ type DelayedFunc struct {
 	RunAt time.Time
 	ID    string
 }
-
 type DelayedFuncs []*DelayedFunc
 
 func (df DelayedFuncs) Len() int           { return len(df) }
