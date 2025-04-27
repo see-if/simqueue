@@ -37,10 +37,12 @@ type DelayedQueue struct {
 
 var lock sync.Mutex
 
+var daleyOnce = &sync.Once{}
+
 func GetEntry() *DelayedQueue {
-	if entry == nil {
-		entry = &DelayedQueue{}
-	}
+	daleyOnce.Do(func() {
+		entry = new(DelayedQueue)
+	})
 	return entry
 }
 
